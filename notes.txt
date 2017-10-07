@@ -1,0 +1,8 @@
+μ = initial population size
+λ = recombination pool size
+
+* make functions for things like recombination and mutation
+* figure out how to terminate in the middle of generation making
+* figure out how to implement a penalty function
+* clean up the code in main plz (functions will help a lot)
+* 
