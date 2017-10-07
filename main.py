@@ -239,7 +239,9 @@ def main():
 
 				'''------Parent Selection------'''
 				# if the user wants fitness proportional selection
-				if container.fitnessSelection == 1:
+				if container.uniformRandomParent == 1:
+					container.parents = deepcopy(selections.uniformRandomParent(container.population_locations, container.population_fitness_values, container.kParent))
+				elif container.fitnessSelection == 1:
 					container.parents = deepcopy(selections.fitnessSelection(container.population_locations, container.population_fitness_values, container.kParent))
 				# if the user wants tournament selection
 				elif container.parentTournament == 1:
@@ -254,6 +256,9 @@ def main():
 					# holders for length of material used
 					LargestX = 0
 					SmallestX = 156
+
+					# Set the penalty for the current offspring to 0 before starting
+					container.fitness_penalty = 0
 
 					# Stores the newly created offspring
 					mutated_offspring = []
@@ -276,17 +281,20 @@ def main():
 					# for every shape in the file, choose a position
 					for index in range(0, len(test_offspring)):
 
-						# ------RECOMBINATION------
-						# Does the recombination, found in Recombination File
-						x_cord, y_cord, rotation, shape = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index)
-
-						# ----MUTATION-----
 						# obtain a random chance for mutation
 						mutate = random.random()
 
+						# ------RECOMBINATION------
+						if mutate > float(container.mutationRate):
+							# Does the recombination, found in Recombination File
+							x_cord, y_cord, rotation, shape = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, container.penalty)
+						else:
+							x_cord, y_cord, rotation, shape = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, 0)
+						
+						# ----MUTATION-----
 						# If necessary mutate
 						if mutate <= float(container.mutationRate):
-							x_cord, y_cord, rotation, shape = operations.mutation(container.materialSheet, container.maxLength, container.maxWidth, shape)
+							x_cord, y_cord, rotation, shape = operations.mutation(container.materialSheet, container.maxLength, container.maxWidth, shape, container.penalty)
 
 						# Place the newly created shape if it is valid
 						operations.placeShape(container.materialSheet, x_cord, y_cord, shape)
@@ -360,7 +368,9 @@ def main():
 		
 
 				'''------Survival Selection------'''
-				if container.truncation == 1:
+				if container.uniformRandomSurvival == 1:
+					container.offspring, container.offspring_fitness = deepcopy(selections.uniformRandomSurvival(container.mutated_offspring, container.mutated_offspring_fitness, container.kOffspring))
+				elif container.truncation == 1:
 					container.offspring = deepcopy(container.mutated_offspring[0: int(container.kOffspring)])
 					container.offspring_fitness = deepcopy(container.mutated_offspring_fitness[0: int(container.kOffspring)])
 				elif container.offspringTournament == 1:				

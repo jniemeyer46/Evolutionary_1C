@@ -196,7 +196,7 @@ def fitnessCalc(maxLength, usedLength):
 	return fitness_calculation
 
 
-def recombination(sheet, maxL, maxW, shapes, test_offspring, index):
+def recombination(sheet, maxL, maxW, shapes, test_offspring, index, penalty):
 	recombination_valid = False
 	x_cord, y_cord, rotation = test_offspring[int(index)]
 
@@ -222,11 +222,14 @@ def recombination(sheet, maxL, maxW, shapes, test_offspring, index):
 
 		# Check whether the shape fits on the material in the current position
 		recombination_valid = validPlacement(sheet, maxL, maxW, x_cord, y_cord, shape)
+
+		if penalty:
+			pass
 		
 	return x_cord, y_cord, rotation, shape
 
 
-def mutation(sheet, maxL, maxW, shape):
+def mutation(sheet, maxL, maxW, shape, penalty):
 	mutation_valid = False
 	# Keep obtaining a new position until it fits on the material
 	while not mutation_valid:
@@ -240,6 +243,9 @@ def mutation(sheet, maxL, maxW, shape):
 			shape = rotate_shape(rotation, shape)
 
 		mutation_valid = validPlacement(sheet, maxL, maxW, x_cord, y_cord, shape)
+
+		if penalty:
+			pass
 
 	return x_cord, y_cord, rotation, shape
 

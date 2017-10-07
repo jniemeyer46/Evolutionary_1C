@@ -27,9 +27,11 @@ class Container:
 	# Setting for EA runs
 	uniformRandom = 0
 
+	uniformRandomParent = 0
 	fitnessSelection = 0
 	parentTournament = 0
 
+	uniformRandomSurvival = 0
 	truncation = 0
 	offspringTournament = 0
 
@@ -52,4 +54,7 @@ class Container:
 	prob_solution_file_random = 0
 	prob_solution_file_EA = 0
 	seed = 0
+	penalty = 0
+
+	fitness_penalty = 0
 

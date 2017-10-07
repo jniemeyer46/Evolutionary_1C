@@ -11,6 +11,8 @@ def setup(container, config):
 			container.populationSize = info[1]
 		elif info[0] == "lambda:":
 			container.offspringSize = info[1]
+		elif info[0] == "penalty:":
+			container.penalty = info[1]
 		elif info[0] == "runs:":
 			container.numRuns = info[1]
 		elif info[0] == "newSeed":
@@ -52,16 +54,21 @@ def setup(container, config):
 				# sets flag for uniform random
 				container.uniformRandom = 1
 		elif info[0] == "Parent_Selection:":
-			if info[1] == "Fitness_Proportional_Selection:" and info[2] == '1,':
+			if info[1] == "Uniform_random_parent:" and info[2] == '1,':
+				# sets flag for Uniform random selection
+				container.uniformRandomParent = 1
+			elif info[3] == "Fitness_Proportional_Selection:" and info[4] == '1,':
 				# sets flag for fitness selection
 				container.fitnessSelection = 1
-			elif info[3] == "k-Tournament_Selection_with_replacement:" and info[4] == '1':
+			elif info[5] == "k-Tournament_Selection_with_replacement:" and info[6] == '1':
 				# sets flag for parent tournament
 				container.parentTournament = 1
 		elif info[0] == "Survival_Selection:":
-			if info[1] == "Truncation:" and info[2] == '1,':
+			if info[1] == "Uniform_random_survival:" and info[2] == '1,':
+				container.uniformRandomSurvival = 1
+			if info[3] == "Truncation:" and info[4] == '1,':
 				container.truncation = 1
-			elif info[3] == "k-Tournament_Selection_without_replacement:" and info[4] == '1':
+			elif info[5] == "k-Tournament_Selection_without_replacement:" and info[6] == '1':
 				container.offspringTournament = 1
 		elif info[0] == "Termination:":
 			if info[1] == "Number_of_evals:" and info[2] == '1,':

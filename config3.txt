@@ -4,8 +4,9 @@ newSeed = 1
 
 mu: 150
 lambda: 75
+penalty: 1
 runs: 30
-mutation_rate: 0.1
+mutation_rate: 0.01
 fitness_evaluations: 10000
 prob_log_random: logs/prob3_random_log.txt
 prob_log_EA: logs/prob3_EA_log.txt
@@ -19,9 +20,9 @@ seed: time.time()
 
 Initialization: Uniform_Random: 1
 
-Parent_Selection: Fitness_Proportional_Selection: 0, k-Tournament_Selection_with_replacement: 1
+Parent_Selection: Uniform_random_parent: 0, Fitness_Proportional_Selection: 0, k-Tournament_Selection_with_replacement: 1
 
-Survival_Selection: Truncation: 0, k-Tournament_Selection_without_replacement: 1
+Survival_Selection: Uniform_random_survival: 0, Truncation: 0, k-Tournament_Selection_without_replacement: 1
 
 Termination: Number_of_evals: 0, no_change_in_average_population_fitness_for_n_generations: 0, no_change_in_best_fitness_in_population_for_n_generations: 1
 

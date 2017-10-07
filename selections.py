@@ -1,6 +1,15 @@
 from copy import deepcopy
 import random
 
+def uniformRandomParent(locations, fitness_values, kParents):
+	parents = []
+
+	for i in range(int(kParents)):
+		parent = random.randrange(0, len(locations))
+		parents.append(locations[parent])
+
+	return parents
+
 
 # returns a list of parents using fitness proportionate selection portion of the EA
 def fitnessSelection(locations, fitness_values, kParent):
@@ -64,6 +73,18 @@ def createParentTourney(locations, fitness_values, kParent):
 		Tourney_participants_fitness_values.append(fitness_values[rand_location])
 
 	return Tourney_participants, Tourney_participants_fitness_values
+
+
+def uniformRandomSurvival(locations, fitness_values, kOffspring):
+	offspring = []
+	offspring_fitness = []
+
+	for i in range(int(kOffspring)):
+		randOffspring = random.randrange(0, len(locations))
+		offspring.append(locations[randOffspring])
+		offspring_fitness.append(fitness_values[randOffspring])
+
+	return offspring, offspring_fitness
 
 
 def offspringTournament(locations, fitness_values, kOffspring):
