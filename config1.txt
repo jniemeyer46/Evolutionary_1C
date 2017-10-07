@@ -6,7 +6,7 @@ mu: 150
 lambda: 75
 runs: 30
 mutation_rate: 0.01
-fitness_evaluations: 10000
+fitness_evaluations: 100
 prob_log: logs/prob1_EA_log.txt
 number_of_evals_till_termination: 100
 tournament_size_for_parent_selection: 20
