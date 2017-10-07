@@ -47,7 +47,9 @@ class Container:
 	kParent = 0
 	kOffspring = 0
 	n = 0
-	prob_log_file = 0
-	prob_solution_file = 0
+	prob_log_file_random = 0
+	prob_log_file_EA = 0
+	prob_solution_file_random = 0
+	prob_solution_file_EA = 0
 	seed = 0
 

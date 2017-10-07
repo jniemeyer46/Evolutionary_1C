@@ -34,13 +34,13 @@ def main():
 		random.seed(container.seed)
 
 		# opening the log file 
-		result_log = open(container.prob_log_file, 'w')
+		result_log = open(container.prob_log_file_random, 'w')
 		# formatting the result log with Result Log at the top
 		result_log.write("Result Log \n")
 		result_log.write("Problem Instance Path = ../%s \n" % sys.argv[2])
 		result_log.write("Random Seed = %s \n" % container.seed)
 		result_log.write("Parameters used = {'fitness evaluations': %s, 'number of runs': %s, 'problem solution location': '%s'}\n\n"
-						% (container.evaluations, container.numRuns, container.prob_solution_file))
+						% (container.evaluations, container.numRuns, container.prob_solution_file_random))
 
 		# runs through the program as many times as the config files says to
 		for run in range(1, int(container.numRuns) + 1):
@@ -98,7 +98,7 @@ def main():
 
 				# Determines the Length of the material used by this iteration
 				usedLength = ((LargestX - SmallestX) + 1)
-				current_fitness = fitnessCalc(container.maxLength, usedLength)
+				current_fitness = operations.fitnessCalc(container.maxLength, usedLength)
 
 				# Determines if the current fitness is higher than the highest fitness this run
 				# if it is, writes it to the log file
@@ -112,7 +112,7 @@ def main():
 					container.solution_fitness = current_fitness
 
 					# Write the shape configuration to the solution file
-					solution_file = open(container.prob_solution_file, 'w')
+					solution_file = open(container.prob_solution_file_random, 'w')
 
 					solution_file.write("Solution File \n\n")
 					for i in range(len(container.solution_locations)):
@@ -130,7 +130,7 @@ def main():
 		random.seed(container.seed)
 
 		# opening the log file 
-		result_log = open(container.prob_log_file, 'w')
+		result_log = open(container.prob_log_file_EA, 'w')
 		# formatting the result log with Result Log at the top and parameters used
 		result_log.write("Result Log \n")
 		result_log.write("Problem Instance Path = ../%s \n" % sys.argv[2])
@@ -139,7 +139,7 @@ def main():
 		result_log.write("Parent_Selection = {'Fitness_Proportional_Selection': %s,'k-Tournament_Selection_with_replacement': %s}\n" % (container.fitnessSelection, container.parentTournament))
 		result_log.write("Survival_Selection = {'Truncation': %s, 'k-Tournament_Selection_without_replacement': %s}\n" % (container.truncation, container.offspringTournament))
 		result_log.write("Termination = {'Number_of_evals': %s, 'no_change_in_average_population_fitness_for_n_generations': %s, 'no_change_in_best_fitness_in_population_for_n_generations': %s}\n" % (container.numEvals, container.avgPopFitness, container.bestPopFitness))
-		result_log.write("Parameters used = {'fitness evaluations': %s, 'number of runs': %s, 'problem solution location': '%s', 'mutation_rate': %s, 'mu': %s, 'lambda': %s}\n\n" % (container.evaluations, container.numRuns, container.prob_solution_file, container.mutationRate, container.populationSize, container.offspringSize))
+		result_log.write("Parameters used = {'fitness evaluations': %s, 'number of runs': %s, 'problem solution location': '%s', 'mutation_rate': %s, 'mu': %s, 'lambda': %s}\n\n" % (container.evaluations, container.numRuns, container.prob_solution_file_EA, container.mutationRate, container.populationSize, container.offspringSize))
 
 		# runs through the program as many times as the config files says to
 		for run in range(1, int(container.numRuns) + 1):
@@ -317,7 +317,7 @@ def main():
 						container.solution_fitness = current_fitness
 
 						# Write the shape configuration to the solution file
-						solution_file = open(container.prob_solution_file, 'w')
+						solution_file = open(container.prob_solution_file_EA, 'w')
 
 						solution_file.write("Solution File \n\n")
 						for i in range(0, len(mutated_offspring)):

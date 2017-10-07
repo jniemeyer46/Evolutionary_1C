@@ -31,8 +31,10 @@ def setup(container, config):
 			container.mutationRate = info[1]
 		elif info[0] == "fitness_evaluations:":
 			container.evaluations = info[1]
-		elif info[0] == "prob_log:":
-			container.prob_log_file = info[1]
+		elif info[0] == "prob_log_random:":
+			container.prob_log_file_random = info[1]
+		elif info[0] == "prob_log_EA:":
+			container.prob_log_file_EA = info[1]
 		elif info[0] == "number_of_evals_till_termination:":
 			container.numEvalsTerminate = info[1]
 		elif info[0] == "tournament_size_for_parent_selection:":
@@ -41,8 +43,10 @@ def setup(container, config):
 			container.kOffspring = info[1]
 		elif info[0] == "n_for_termination_convergence_criterion:":
 			container.n = info[1]
-		elif info[0] == "prob_solution:":
-			container.prob_solution_file = info[1]
+		elif info[0] == "prob_solution_random:":
+			container.prob_solution_file_random = info[1]
+		elif info[0] == "prob_solution_EA:":
+			container.prob_solution_file_EA = info[1]
 		elif info[0] == "Initialization:":
 			if info[1] == "Uniform_Random:" and info[2] == '1':
 				# sets flag for uniform random

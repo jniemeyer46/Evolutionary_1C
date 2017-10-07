@@ -17,7 +17,7 @@ def fitnessSelection(locations, fitness_values, kParent):
 		fitness_prob.append(num/total_fitness)
 
 	for i in range(0, int(kParent)):
-		parents.append(random_pick(locations, fitness_prob))
+		parents.append(random_probability_pick(locations, fitness_prob))
 
 	return parents
 
