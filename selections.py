@@ -102,7 +102,7 @@ def offspringTournament(locations, fitness_values, kOffspring):
 		offspring.append(locations[highest_index])
 		del locations[highest_index]
 		offspring_fitness.append(fitness_values[highest_index])
-		del locations[highest_index]
+		del fitness_values[highest_index]
 
 	return offspring, offspring_fitness
 

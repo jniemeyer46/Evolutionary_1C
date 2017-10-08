@@ -225,9 +225,10 @@ def main():
 				container.offspring_fitness.clear()
 
 				'''------Parent Selection------'''
-				# if the user wants fitness proportional selection
+				# if the user wants uniform random selection
 				if container.uniformRandomParent == 1:
 					container.parents = deepcopy(selections.uniformRandomParent(container.population_locations, container.population_fitness_values, container.kParent))
+				# if the user wants fitness proportional selection
 				elif container.fitnessSelection == 1:
 					container.parents = deepcopy(selections.fitnessSelection(container.population_locations, container.population_fitness_values, container.kParent))
 				# if the user wants tournament selection
@@ -408,7 +409,9 @@ def main():
 				average_run_fitness = average_run_fitness / len(container.average_fitness_holder)
 
 				result_log.write(str(fitness) + "     " + str("%.4f" % container.mutationRate) + "     " + str("%.2f" % average_run_fitness) + "     " + str(best_run_fitness) + "\n")
-				print(str(fitness) + "     " + str("%.4f" % container.mutationRate) + "     " + str("%.2f" % average_run_fitness) + "     " + str(best_run_fitness))
+				
+				if fitness % 20 == 0:
+					print(str(fitness) + "     " + str("%.4f" % container.mutationRate) + "     " + str("%.2f" % average_run_fitness) + "     " + str(best_run_fitness))
 			# formatting the result log with a space after each run block
 			result_log.write("\n")
 

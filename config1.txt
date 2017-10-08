@@ -2,18 +2,18 @@ Random = 0
 EA = 1
 newSeed = 1
 
-mu: 50
-lambda: 50
+mu: 20
+lambda: 10
 penalty: 1
 runs: 30
 mutation_rate: 0.01
 fitness_evaluations: 10000
 prob_log_random: logs/prob1_random_log.txt
 prob_log_EA: logs/prob1_EA_log.txt
-number_of_evals_till_termination: 40
-tournament_size_for_parent_selection: 20
-tournament_size_for_survival_selection: 20
-n_for_termination_convergence_criterion: 20
+number_of_evals_till_termination: 5
+tournament_size_for_parent_selection: 10
+tournament_size_for_survival_selection: 10
+n_for_termination_convergence_criterion: 5
 prob_solution_random: solutions/prob1_random_solution.txt
 prob_solution_EA: solutions/prob1_EA_solution.txt
 seed: time.time()
@@ -26,7 +26,7 @@ Parent_Selection: Uniform_random_parent: 0, Fitness_Proportional_Selection: 0, k
 
 Survival_Strategy: plus: 0, comma: 1
 
-Survival_Selection: Uniform_random_survival: 0, Truncation: 1, k-Tournament_Selection_without_replacement: 0
+Survival_Selection: Uniform_random_survival: 0, Truncation: 0, k-Tournament_Selection_without_replacement: 1
 
 Termination: Number_of_evals: 0, no_change_in_average_population_fitness_for_n_generations: 0, no_change_in_best_fitness_in_population_for_n_generations: 1
 

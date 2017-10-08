@@ -1,33 +1,59 @@
 Result Log 
 Problem Instance Path = ../problem1.txt 
-Random Seed = 1507486421.262911 
+Random Seed = 1507499101.72093 
 Initialization = {'Uniform_Random': 1 }
 Parent_Selection = {'Fitness_Proportional_Selection': 0,'k-Tournament_Selection_with_replacement': 1}
-Survival_Selection = {'Truncation': 1, 'k-Tournament_Selection_without_replacement': 0}
+Survival_Selection = {'Truncation': 0, 'k-Tournament_Selection_without_replacement': 1}
 Termination = {'Number_of_evals': 0, 'no_change_in_average_population_fitness_for_n_generations': 0, 'no_change_in_best_fitness_in_population_for_n_generations': 1}
-Parameters used = {'fitness evaluations': 10000, 'number of runs': 30, 'problem solution location': 'solutions/prob1_EA_solution.txt', 'mutation_rate': 0.01, 'mu': 50, 'lambda': 50}
+Parameters used = {'fitness evaluations': 10000, 'number of runs': 30, 'problem solution location': 'solutions/prob1_EA_solution.txt', 'mutation_rate': 0.01, 'mu': 20, 'lambda': 10}
 
 Run 1
-50     0.0100     312     312
-1     0.0260     -5.00     0
-2     0.0340     -3.50     6
-3     0.0400     -0.83     13
-4     0.0450     0.54     13
-5     0.0490     1.11     13
-6     0.0540     1.35     13
-7     0.0580     1.76     37
-8     0.0610     1.97     37
-9     0.0640     2.22     37
-10     0.0650     2.22     37
-11     0.0680     2.29     37
-12     0.0700     2.44     37
-13     0.0730     2.73     37
-14     0.0750     2.91     37
-15     0.0780     3.19     39
-16     0.0790     3.32     39
-17     0.0790     3.55     39
-18     0.0790     3.59     39
-19     0.0790     3.87     39
-20     0.0790     4.19     39
-21     0.0790     4.58     39
-22     0.0790     4.98     39
+20     0.0100     312     312
+1     0.0140     6.00     10
+2     0.0200     10.00     12
+3     0.0240     10.00     12
+4     0.0280     9.25     12
+5     0.0290     8.65     12
+6     0.0310     8.28     12
+7     0.0320     7.61     12
+8     0.0320     7.33     12
+9     0.0340     6.93     12
+10     0.0380     6.59     12
+11     0.0410     6.33     12
+12     0.0440     6.19     12
+13     0.0470     6.17     12
+14     0.0490     6.15     12
+15     0.0490     6.14     15
+16     0.0520     6.13     15
+17     0.0520     6.24     21
+18     0.0530     6.24     21
+19     0.0530     6.28     21
+20     0.0530     6.31     21
+21     0.0540     6.35     21
+22     0.0550     6.33     21
+23     0.0570     6.36     21
+24     0.0600     6.39     21
+25     0.0600     6.38     21
+26     0.0600     6.44     21
+27     0.0600     6.61     24
+28     0.0620     6.74     25
+29     0.0620     6.78     25
+30     0.0630     6.83     25
+31     0.0640     6.96     25
+32     0.0650     7.31     25
+33     0.0650     7.55     25
+34     0.0660     7.84     29
+35     0.0660     8.20     29
+36     0.0670     8.53     29
+37     0.0670     8.80     29
+38     0.0670     9.13     30
+39     0.0670     9.41     30
+40     0.0670     9.74     30
+41     0.0690     9.94     31
+42     0.0690     10.12     31
+43     0.0690     10.17     31
+44     0.0690     10.12     31
+45     0.0690     10.05     31
+46     0.0690     9.94     31
+47     0.0690     9.79     31
+48     0.0690     9.64     31
