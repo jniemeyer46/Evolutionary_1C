@@ -408,8 +408,8 @@ def main():
 					average_run_fitness += i
 				average_run_fitness = average_run_fitness / len(container.average_fitness_holder)
 
-				result_log.write(str(fitness) + "	" + str(average_run_fitness) + "	" + str(best_run_fitness) + "\n")
-				print(str(fitness) + "       " + str(average_run_fitness) + "        " + str(best_run_fitness))
+				result_log.write(str(fitness) + "	" + str("%.2f" % average_run_fitness) + "	" + str(best_run_fitness) + "\n")
+				print(str(fitness) + "       " + str("%.2f" % average_run_fitness) + "        " + str(best_run_fitness))
 			# formatting the result log with a space after each run block
 			result_log.write("\n")
 
