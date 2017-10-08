@@ -302,6 +302,7 @@ def main():
 								# Increase the mutation rate by 1%
 								container.mutationRate = float(container.mutationRate) + 0.01
 								Mutation_count = 0
+
 						else:  # no penalty for recombination if mutation is occuring
 							x_cord, y_cord, rotation, shape, penalty = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, False)
 						
