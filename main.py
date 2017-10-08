@@ -49,6 +49,7 @@ def main():
 
 			# Titles each section with Run i, where i is the run number (1-30)
 			result_log.write("Run " + str(run) + "\n")
+			print("Run " + str(run) + "\n")
 
 			# run through the given amount of times given by fitness evaluation
 			for fitness in range(1, int(container.evaluations)+1):
@@ -105,6 +106,7 @@ def main():
 				if highest_fitness < current_fitness:
 					highest_fitness = current_fitness
 					result_log.write(str(fitness) + "	" + str(current_fitness) + "\n")
+					print(str(fitness) + "	" + str(current_fitness) + "\n")
 
 				# If the current solution is the best, replace the current solution with the new solution
 				if container.solution_fitness < current_fitness:
@@ -407,7 +409,7 @@ def main():
 				average_run_fitness = average_run_fitness / len(container.average_fitness_holder)
 
 				result_log.write(str(fitness) + "	" + str(average_run_fitness) + "	" + str(best_run_fitness) + "\n")
-				print(str(fitness) + "       " + str(average_run_fitness) + "        " + str(best_run_fitness) + "\n")
+				print(str(fitness) + "       " + str(average_run_fitness) + "        " + str(best_run_fitness))
 			# formatting the result log with a space after each run block
 			result_log.write("\n")
 

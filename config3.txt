@@ -1,5 +1,5 @@
-Random = 1
-EA = 0
+Random = 0
+EA = 1
 newSeed = 1
 
 mu: 150
@@ -20,11 +20,11 @@ seed: time.time()
 
 Initialization: Uniform_Random: 1
 
-Parent_Selection: Uniform_random_parent: 0, Fitness_Proportional_Selection: 0, k-Tournament_Selection_with_replacement: 1
+Parent_Selection: Uniform_random_parent: 1, Fitness_Proportional_Selection: 0, k-Tournament_Selection_with_replacement: 0
 
 Survival_Strategy: plus: 0, comma: 1
 
-Survival_Selection: Uniform_random_survival: 0, Truncation: 0, k-Tournament_Selection_without_replacement: 1
+Survival_Selection: Uniform_random_survival: 1, Truncation: 0, k-Tournament_Selection_without_replacement: 0
 
 Termination: Number_of_evals: 0, no_change_in_average_population_fitness_for_n_generations: 0, no_change_in_best_fitness_in_population_for_n_generations: 1
 
