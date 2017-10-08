@@ -260,6 +260,7 @@ def main():
 					SmallestX = 156
 
 					# Used to self adapt the mutation operators if it isnt being used often enough
+					nonMutation_count = 0
 					Mutation_count = 0
 
 					# Set the penalty for the current offspring to 0 before starting
@@ -295,13 +296,13 @@ def main():
 							container.fitness_penalty = int(container.fitness_penalty) + int(penalty)
 
 							# This count will determine when the mutation is too low
-							Mutation_count += 1
+							nonMutation_count += 1
 
 							# This determines whether the mutation rate is in need of an increase or not
-							if Mutation_count == 20 and container.adaptiveMutation:
+							if nonMutation_count == 20 and container.adaptiveMutation:
 								# Increase the mutation rate by 1%
 								container.mutationRate = float(container.mutationRate) + 0.01
-								Mutation_count = 0
+								nonMutation_count = 0
 
 						else:  # no penalty for recombination if mutation is occuring
 							x_cord, y_cord, rotation, shape, penalty = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, False)
@@ -311,6 +312,15 @@ def main():
 						if mutate <= float(container.mutationRate):
 							x_cord, y_cord, rotation, shape, penalty = operations.mutation(container.materialSheet, container.maxLength, container.maxWidth, shape, container.penalty)
 							container.fitness_penalty = int(container.fitness_penalty) + int(penalty)
+
+							# This count will determine if there is too much mutation happening
+							Mutation_count += 1
+
+							# This determines whether it is time to increase the mutation rate or not
+							if Mutation_count == 20 and container.adaptiveMutation:
+								# Decrease mutation rate by 1%
+								container.mutationRate = float(container.mutaitonRate) - 0.01
+								Mutation_count = 0
 
 						# Place the newly created shape if it is valid
 						operations.placeShape(container.materialSheet, x_cord, y_cord, shape)
