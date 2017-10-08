@@ -55,7 +55,7 @@ def main():
 			for fitness in range(1, int(container.evaluations)+1):
 				# holders for length of material used
 				LargestX = 0
-				SmallestX = 156
+				SmallestX = int(container.maxLength) - 1
 
 				# clears the solution list each evaluation
 				container.solution_locations.clear()
@@ -83,19 +83,11 @@ def main():
 							
 						# if the move was valid and was placed
 						if valid:
-							operations.placeShape(container.materialSheet, x_cord, y_cord, shape)
+							operations.placeShape(container.materialSheet, container.maxLength, x_cord, y_cord, shape, SmallestX, LargestX)
 							# store the location in a tuple if it worked
 							placementLocation = (x_cord, y_cord, rotation)
 							# append it to the list
 							container.solution_locations.append(placementLocation)
-
-				# obtains the smallest and largest position in the material array
-				for i in range(len(container.materialSheet)):
-					if 1 in container.materialSheet[i]:
-						if i < SmallestX:
-							SmallestX = i
-						elif i > LargestX:
-							LargestX = i
 
 				# Determines the Length of the material used by this iteration
 				usedLength = ((LargestX - SmallestX) + 1)
@@ -164,7 +156,7 @@ def main():
 			for person in range(0, int(container.populationSize)):
 				# holders for length of material used
 				LargestX = 0
-				SmallestX = 156
+				SmallestX = int(container.maxLength) - 1
 
 				# clears the solution for each evaluation
 				container.solution_locations.clear()
@@ -191,7 +183,7 @@ def main():
 							
 						# if the move was valid and was placed
 						if valid:
-							operations.placeShape(container.materialSheet, x_cord, y_cord, shape)
+							operations.placeShape(container.materialSheet, container.maxLength, x_cord, y_cord, shape, SmallestX, LargestX)
 							# store the location in a tuple if it worked
 							placementLocation = (x_cord, y_cord, rotation)
 							# append it to the list
@@ -199,14 +191,6 @@ def main():
 
 				# Make a list containing all people in a population
 				container.population_locations.append(container.solution_locations)
-
-				# obtains the smallest and largest position in the material array
-				for i in range(len(container.materialSheet)):
-					if 1 in container.materialSheet[i]:
-						if i < SmallestX:
-							SmallestX = i
-						elif i > LargestX:
-							LargestX = i
 
 				# Determines the Length of the material used by this iteration
 				usedLength = ((LargestX - SmallestX) + 1)
@@ -229,7 +213,8 @@ def main():
 			average_fitness = average_fitness / int(container.populationSize)
 
 
-			result_log.write(container.populationSize + "	 " + str(round(average_fitness)) + "	" + str(best_fitness) + "\n")
+			result_log.write(container.populationSize + "     " + str("%.4f" % float(container.mutationRate)) + "     " + str(round(average_fitness)) + "     " + str(best_fitness) + "\n")
+			print(container.populationSize + "     " + str("%.4f" % float(container.mutationRate)) + "     " + str(round(average_fitness)) + "     " + str(best_fitness) + "\n")
 
 			'''------START OF THE EA------'''
 			for fitness in range(1, int(container.evaluations) + 1):
@@ -257,7 +242,7 @@ def main():
 				for index in range(0, int(container.offspringSize)):
 					# holders for length of material used
 					LargestX = 0
-					SmallestX = 156
+					SmallestX = int(container.maxLength) - 1
 
 					# Used to self adapt the mutation operators if it isnt being used often enough
 					nonMutation_count = 0
@@ -290,6 +275,7 @@ def main():
 						mutate = random.random()
 
 						# ------RECOMBINATION------
+						direction = "up"
 						if mutate > float(container.mutationRate):
 							# Does the recombination, found in Recombination File
 							x_cord, y_cord, rotation, shape, penalty = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, container.penalty)
@@ -299,15 +285,15 @@ def main():
 							nonMutation_count += 1
 
 							# This determines whether the mutation rate is in need of an increase or not
-							if nonMutation_count == 20 and container.adaptiveMutation:
-								# Increase the mutation rate by 1%
-								container.mutationRate = float(container.mutationRate) + 0.01
-								nonMutation_count = 0
+							if container.adaptiveMutation:
+								# Increase the mutation rate by .1%
+								container.mutationRate, nonMutation_count = operations.mutationSelfAdapt(len(container.shapes), float(container.mutationRate), nonMutation_count, direction)
 
 						else:  # no penalty for recombination if mutation is occuring
 							x_cord, y_cord, rotation, shape, penalty = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, False)
 						
 						# ----MUTATION-----
+						direction = "down"
 						# If necessary mutate
 						if mutate <= float(container.mutationRate):
 							x_cord, y_cord, rotation, shape, penalty = operations.mutation(container.materialSheet, container.maxLength, container.maxWidth, shape, container.penalty)
@@ -317,13 +303,12 @@ def main():
 							Mutation_count += 1
 
 							# This determines whether it is time to increase the mutation rate or not
-							if Mutation_count == 20 and container.adaptiveMutation:
-								# Decrease mutation rate by 1%
-								container.mutationRate = float(container.mutationRate) - 0.01
-								Mutation_count = 0
+							if container.adaptiveMutation:
+								# Decrease the mutation rate by .1%
+								container.mutationRate, Mutation_count = operations.mutationSelfAdapt(len(container.shapes), float(container.mutationRate), Mutation_count, direction)
 
 						# Place the newly created shape if it is valid
-						operations.placeShape(container.materialSheet, x_cord, y_cord, shape)
+						SmallestX, LargestX = operations.placeShape(container.materialSheet, container.maxLength, x_cord, y_cord, shape, SmallestX, LargestX)
 
 						# store the location in a tuple if it worked
 						placementLocation = (x_cord, y_cord, rotation)
@@ -332,14 +317,6 @@ def main():
 						mutated_offspring.append(placementLocation)
 
 					container.mutated_offspring.append(mutated_offspring)
-
-					# obtains the smallest and largest position in the material array
-					for i in range(len(container.materialSheet)):
-						if 1 in container.materialSheet[i]:
-							if i < SmallestX:
-								SmallestX = i
-							elif i > LargestX:
-								LargestX = i
 
 					# Determines the Length of the material used by this iteration
 					usedLength = ((LargestX - SmallestX) + 1)
@@ -430,8 +407,8 @@ def main():
 					average_run_fitness += i
 				average_run_fitness = average_run_fitness / len(container.average_fitness_holder)
 
-				result_log.write(str(fitness) + "	" + str("%.2f" % average_run_fitness) + "	" + str(best_run_fitness) + "\n")
-				print(str(fitness) + "       " + str("%.2f" % average_run_fitness) + "        " + str(best_run_fitness))
+				result_log.write(str(fitness) + "     " + str("%.4f" % container.mutationRate) + "     " + str("%.2f" % average_run_fitness) + "     " + str(best_run_fitness) + "\n")
+				print(str(fitness) + "     " + str("%.4f" % container.mutationRate) + "     " + str("%.2f" % average_run_fitness) + "     " + str(best_run_fitness))
 			# formatting the result log with a space after each run block
 			result_log.write("\n")
 

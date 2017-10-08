@@ -107,7 +107,9 @@ def validPlacement(array, maxLength, maxWidth, xCord, yCord, string):
 	return valid
 
 
-def placeShape(array, xCord, yCord, string):
+def placeShape(array, maxL, xCord, yCord, string, smallest, largest):
+	smallest = smallest
+	largest = largest
 	#splits string into moves
 	moves = string.split(" ")
 
@@ -131,10 +133,16 @@ def placeShape(array, xCord, yCord, string):
 			for i in range(0, int(element[1])):
 				newXcord = newXcord + 1
 				array[newXcord][newYcord] = 1
+				if largest < newXcord:
+					largest = newXcord
 		elif element[0] == 'L':
 			for i in range(0, int(element[1])):
 				newXcord = newXcord - 1
 				array[newXcord][newYcord] = 1
+				if smallest > newXcord:
+					smallest = newXcord
+
+	return smallest, largest
 
 
 def rotate_shape(num, string):
@@ -305,3 +313,21 @@ def penalty(sheet, maxL, maxW, x_cord, y_cord, shape, penaltyAmount):
 		return valid_placement, x_cord, y_cord, total_penalty
 
 	return valid_placement, x_cord, y_cord, total_penalty
+
+
+def mutationSelfAdapt(length, mutation, count, direction):
+	mutate = mutation
+	currentCount = count
+	if length == count:
+		if direction == "up":
+			mutate = mutation + 0.001
+			currentCount = 0
+
+			return mutate, currentCount
+		elif direction == "down":
+			mutate = mutation - 0.001
+			currentCount = 0
+
+			return mutate, currentCount
+
+	return mutate, currentCount
