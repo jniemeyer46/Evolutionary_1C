@@ -18,6 +18,8 @@ prob_solution_random: solutions/prob1_random_solution.txt
 prob_solution_EA: solutions/prob1_EA_solution.txt
 seed: time.time()
 
+selfAdaptive: adaptMutation: 0
+
 Initialization: Uniform_Random: 1
 
 Parent_Selection: Uniform_random_parent: 0, Fitness_Proportional_Selection: 0, k-Tournament_Selection_with_replacement: 1

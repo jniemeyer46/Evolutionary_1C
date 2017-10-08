@@ -259,6 +259,9 @@ def main():
 					LargestX = 0
 					SmallestX = 156
 
+					# Used to self adapt the mutation operators if it isnt being used often enough
+					Mutation_count = 0
+
 					# Set the penalty for the current offspring to 0 before starting
 					container.fitness_penalty = 0
 
@@ -282,7 +285,6 @@ def main():
 
 					# for every shape in the file, choose a position
 					for index in range(0, len(test_offspring)):
-
 						# obtain a random chance for mutation
 						mutate = random.random()
 
@@ -291,6 +293,15 @@ def main():
 							# Does the recombination, found in Recombination File
 							x_cord, y_cord, rotation, shape, penalty = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, container.penalty)
 							container.fitness_penalty = int(container.fitness_penalty) + int(penalty)
+
+							# This count will determine when the mutation is too low
+							Mutation_count += 1
+
+							# This determines whether the mutation rate is in need of an increase or not
+							if Mutation_count == 20 and container.adaptiveMutation:
+								# Increase the mutation rate by 1%
+								container.mutationRate = float(container.mutationRate) + 0.01
+								Mutation_count = 0
 						else:  # no penalty for recombination if mutation is occuring
 							x_cord, y_cord, rotation, shape, penalty = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, False)
 						

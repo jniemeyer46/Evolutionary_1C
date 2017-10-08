@@ -26,6 +26,9 @@ class Container:
 
 	# Setting for EA runs
 
+	# self adaptive values
+	adaptiveMutation = 0
+
 	# Initialize Population
 	uniformRandom = 0
 

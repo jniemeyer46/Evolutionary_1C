@@ -29,6 +29,9 @@ def setup(container, config):
 					if line[0] == "Random":
 						container.seed = line[3]
 						break
+		elif info[0] == "selfAdaptive:":
+			if info[1] == "adaptMutation:" and info[2] == '1':
+				container.adaptiveMutation = 1
 		elif info[0] == "mutation_rate:":
 			container.mutationRate = info[1]
 		elif info[0] == "fitness_evaluations:":
