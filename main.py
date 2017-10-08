@@ -319,7 +319,7 @@ def main():
 							# This determines whether it is time to increase the mutation rate or not
 							if Mutation_count == 20 and container.adaptiveMutation:
 								# Decrease mutation rate by 1%
-								container.mutationRate = float(container.mutaitonRate) - 0.01
+								container.mutationRate = float(container.mutationRate) - 0.01
 								Mutation_count = 0
 
 						# Place the newly created shape if it is valid
