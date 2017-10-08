@@ -25,16 +25,25 @@ class Container:
 	solution_locations = []
 
 	# Setting for EA runs
+
+	# Initialize Population
 	uniformRandom = 0
 
+	# Parent Selection
 	uniformRandomParent = 0
 	fitnessSelection = 0
 	parentTournament = 0
 
+	# Survival Strategies
+	survivalStrategyPlus = 0
+	survivalStrategyComma = 0
+
+	# Survival Selection
 	uniformRandomSurvival = 0
 	truncation = 0
 	offspringTournament = 0
 
+	# Termination
 	numEvals = 0
 	avgPopFitness = 0
 	bestPopFitness = 0

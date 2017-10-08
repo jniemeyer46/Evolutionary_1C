@@ -56,7 +56,6 @@ def parentTournament(locations, fitness_values, kParent):
 		for index in range(0, len(tournament_fitness_pool)):
 			if tournament_fitness_pool[index] > tournament_fitness_pool[highest_index]:
 				highest_index = index
-	
 
 		parents.append(locations[highest_index])
 

@@ -287,14 +287,16 @@ def main():
 						# ------RECOMBINATION------
 						if mutate > float(container.mutationRate):
 							# Does the recombination, found in Recombination File
-							x_cord, y_cord, rotation, shape = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, container.penalty)
-						else:
-							x_cord, y_cord, rotation, shape = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, 0)
+							x_cord, y_cord, rotation, shape, penalty = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, container.penalty)
+							container.fitness_penalty = int(container.fitness_penalty) + int(penalty)
+						else:  # no penalty for recombination if mutation is occuring
+							x_cord, y_cord, rotation, shape, penalty = operations.recombination(container.materialSheet, container.maxLength, container.maxWidth, container.shapes, test_offspring, index, False)
 						
 						# ----MUTATION-----
 						# If necessary mutate
 						if mutate <= float(container.mutationRate):
-							x_cord, y_cord, rotation, shape = operations.mutation(container.materialSheet, container.maxLength, container.maxWidth, shape, container.penalty)
+							x_cord, y_cord, rotation, shape, penalty = operations.mutation(container.materialSheet, container.maxLength, container.maxWidth, shape, container.penalty)
+							container.fitness_penalty = int(container.fitness_penalty) + int(penalty)
 
 						# Place the newly created shape if it is valid
 						operations.placeShape(container.materialSheet, x_cord, y_cord, shape)
@@ -318,6 +320,7 @@ def main():
 					# Determines the Length of the material used by this iteration
 					usedLength = ((LargestX - SmallestX) + 1)
 					current_fitness = operations.fitnessCalc(container.maxLength, usedLength)
+					current_fitness -= int(container.fitness_penalty)
 
 					# If the current solution is the best, replace the current solution with the new solution
 					if container.solution_fitness < current_fitness:
@@ -362,10 +365,14 @@ def main():
 							break
 
 
-				# Stores the new population to be used in the following generations
-				container.population_locations = deepcopy(container.mutated_offspring)
-				container.population_fitness_values = deepcopy(container.mutated_offspring_fitness)
-		
+				'''------Survival Strategy Implementation and Survival Selection------'''
+				if container.survivalStrategyPlus:
+					container.mutated_offspring = container.mutated_offspring + container.population_locations
+					container.mutated_offspring_fitness = container.mutated_offspring_fitness + container.population_fitness_values
+				elif container.survivalStrategyComma:
+					# Parents are automaticaly killed off after this, no implementation for this particular part needed
+					pass
+
 
 				'''------Survival Selection------'''
 				if container.uniformRandomSurvival == 1:
@@ -376,6 +383,10 @@ def main():
 				elif container.offspringTournament == 1:				
 					container.offspring, container.offspring_fitness = deepcopy(selections.offspringTournament(container.mutated_offspring, container.mutated_offspring_fitness, container.kOffspring))
 
+
+				# Stores the new population to be used in the following generations	(Uses the survival strategy through survival selection)
+				container.population_locations = deepcopy(container.offspring)
+				container.population_fitness_values = deepcopy(container.offspring_fitness)
 
 				'''------Result Log Formatting Evaluations------'''
 				average_fitness = 0

@@ -54,6 +54,10 @@ def validPlacement(array, maxLength, maxWidth, xCord, yCord, string):
 	newXcord = xCord
 	newYcord = yCord
 
+	if newXcord < 0 or newXcord >= int(maxLength) or newYcord < 0 or newYcord >= int(maxWidth):
+		valid = False
+		return valid
+
 	for element in moves:
 		if element[0] == 'U':
 			if ((newYcord + int(element[1])) < int(maxWidth)) and not (array[newXcord][newYcord] == 1):
@@ -196,8 +200,9 @@ def fitnessCalc(maxLength, usedLength):
 	return fitness_calculation
 
 
-def recombination(sheet, maxL, maxW, shapes, test_offspring, index, penalty):
+def recombination(sheet, maxL, maxW, shapes, test_offspring, index, penaltyAmount):
 	recombination_valid = False
+	total_penalty = 0
 	x_cord, y_cord, rotation = test_offspring[int(index)]
 
 	if rotation != 0:
@@ -207,8 +212,11 @@ def recombination(sheet, maxL, maxW, shapes, test_offspring, index, penalty):
 
 	recombination_valid = validPlacement(sheet, maxL, maxW, x_cord, y_cord, shape)
 
+	if penaltyAmount and not recombination_valid:
+		recombination_valid, x_cord, y_cord, total_penalty = penalty(sheet, maxL, maxW, x_cord, y_cord, shape, penaltyAmount)
+
 	# Keep obtaining a new position until it fits on the material
-	while not recombination_valid:
+	while not recombination_valid:	
 		# generate random position and rotation
 		x_cord = random.randrange(0, int(maxL))
 		y_cord = random.randrange(0, int(maxW))
@@ -223,14 +231,15 @@ def recombination(sheet, maxL, maxW, shapes, test_offspring, index, penalty):
 		# Check whether the shape fits on the material in the current position
 		recombination_valid = validPlacement(sheet, maxL, maxW, x_cord, y_cord, shape)
 
-		if penalty:
-			pass
-		
-	return x_cord, y_cord, rotation, shape
+		if penaltyAmount and not recombination_valid:
+			recombination_valid, x_cord, y_cord, total_penalty = penalty(sheet, maxL, maxW, x_cord, y_cord, shape, penaltyAmount)
+
+	return x_cord, y_cord, rotation, shape, total_penalty
 
 
-def mutation(sheet, maxL, maxW, shape, penalty):
+def mutation(sheet, maxL, maxW, shape, penaltyAmount):
 	mutation_valid = False
+	total_penalty = 0
 	# Keep obtaining a new position until it fits on the material
 	while not mutation_valid:
 		# generate random position and rotation
@@ -244,8 +253,55 @@ def mutation(sheet, maxL, maxW, shape, penalty):
 
 		mutation_valid = validPlacement(sheet, maxL, maxW, x_cord, y_cord, shape)
 
-		if penalty:
-			pass
+		if penaltyAmount and not mutation_valid:
+			mutation_valid, x_cord, y_cord, total_penalty = penalty(sheet, maxL, maxW, x_cord, y_cord, shape, penaltyAmount)
 
-	return x_cord, y_cord, rotation, shape
+	return x_cord, y_cord, rotation, shape, total_penalty
 
+
+def penalty(sheet, maxL, maxW, x_cord, y_cord, shape, penaltyAmount):
+	valid_placement = False
+	total_penalty = 0
+
+	if validPlacement(sheet, maxL, maxW, x_cord + 1, y_cord, shape):
+		x_cord = x_cord + 1
+		total_penalty += int(penaltyAmount)
+		valid_placement = True
+		return valid_placement, x_cord, y_cord, total_penalty
+	elif validPlacement(sheet, maxL, maxW, x_cord - 1, y_cord, shape):
+		x_cord = x_cord - 1
+		total_penalty += int(penaltyAmount)
+		valid_placement = True
+		return valid_placement, x_cord, y_cord, total_penalty
+	elif validPlacement(sheet, maxL, maxW, x_cord, y_cord + 1, shape):
+		y_cord = y_cord + 1
+		total_penalty += int(penaltyAmount)
+		valid_placement = True
+		return valid_placement, x_cord, y_cord, total_penalty
+	elif validPlacement(sheet, maxL, maxW, x_cord, y_cord - 1, shape):
+		y_cord = y_cord - 1
+		total_penalty += int(penaltyAmount)
+		valid_placement = True
+		return valid_placement, x_cord, y_cord, total_penalty
+	elif validPlacement(sheet, maxL, maxW, x_cord + 2, y_cord, shape):
+		x_cord = x_cord + 2
+		total_penalty += (int(penaltyAmount) * 2)
+		valid_placement = True
+		return valid_placement, x_cord, y_cord, total_penalty
+	elif validPlacement(sheet, maxL, maxW, x_cord - 2, y_cord, shape):
+		x_cord = x_cord - 2
+		total_penalty += (int(penaltyAmount) * 2)
+		valid_placement = True
+		return valid_placement, x_cord, y_cord, total_penalty
+	elif validPlacement(sheet, maxL, maxW, x_cord, y_cord + 2, shape):
+		y_cord = y_cord + 2
+		total_penalty += (int(penaltyAmount) * 2)
+		valid_placement = True
+		return valid_placement, x_cord, y_cord, total_penalty
+	elif validPlacement(sheet, maxL, maxW, x_cord, y_cord - 2, shape):
+		y_cord = y_cord - 2
+		total_penalty += (int(penaltyAmount) * 2)
+		valid_placement = True
+		return valid_placement, x_cord, y_cord, total_penalty
+
+	return valid_placement, x_cord, y_cord, total_penalty

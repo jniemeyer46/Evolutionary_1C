@@ -63,6 +63,11 @@ def setup(container, config):
 			elif info[5] == "k-Tournament_Selection_with_replacement:" and info[6] == '1':
 				# sets flag for parent tournament
 				container.parentTournament = 1
+		elif info[0] == "Survival_Strategy:":
+			if info[1] == "plus:" and info[2] == '1,':
+				container.survivalStrategyPlus = 1
+			elif info[3] == 'comma:' and info[2] == '1':
+				container.survivalStrategyComma = 1
 		elif info[0] == "Survival_Selection:":
 			if info[1] == "Uniform_random_survival:" and info[2] == '1,':
 				container.uniformRandomSurvival = 1
