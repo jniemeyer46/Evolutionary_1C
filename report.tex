@@ -1,7 +1,7 @@
 \documentclass[•]{article}
 \usepackage{graphicx}
 \usepackage{listings}
-\graphicspath{ {/Users/jjniemeyer46/Desktop/Pics} }
+\graphicspath{ {/Users/jjniemeyer46/Desktop/Pics/EC_1c} }
 
 \usepackage{color}
  
@@ -41,21 +41,33 @@
 The self-adaptive parameter that was chosen for this EA was the mutation rate.  The self adaptation that was created for the mutation rate is very simple, it simply changes based on the number of iterations gone between mutations.  So if there are too many mutations happening the code will increase the mutation rate by a factor of 0.001 or 0.1%, until it finds a spot where mutation is happening frequent enough to get out of any local optimum, but also not too frequent since a random EA is not what is wanted.  In order for it to determine whether the mutation rate needs changes there is a counter implemented so that if an entire offspring is created without any mutation happening, the mutation rate will increase.  The opposite is also true, meaning when there is too much mutation happening the mutation rate decreases by a factor of 0.001 or 0.01%.
 
 \section*{\begin{center} Investigation \end{center}}
-a.) \\
+\textbf{a.)} \\
 \indent For problem 1, I would say that the self-adaptivity did not have a very large impact on the average fitness, but it very well may have increased the best fitness by quite a lot due to the ability of getting a population out of a local optimum.  For problem 2 it seems like the average fitness is extremely low while the best fitness is doing just fine.  I believe this is due to the mutation rate getting too high, though it seems to work fine for Problem 1 and Problem 3.  Problem 3, much like Problem 1, seems to be doing quite well.  The average gets to a certain point on all three problems and steadies out like it should, however for Problem 2 something is holding it back and I am not entirely sure what. \\
 \indent So there is definitely a differing benefit between the problems, with Problem 1 and Problem 3 looking about the same and Problem 2 being underwhelming in terms of average fitness.  The average fitness does reach a certain point on all datasets and hover around that point, which is a good thing when it comes to the averaging of populations.\\\\
 
-\noindent b.) \\
+\noindent \textbf{b.)} \\
 \indent The penalty function coefficient will greatly impact the performance of all three problems.  If I was to increase the penalty function coefficient there would be a severe drop in best fitness and average fitness due to how the penalty function currently works, likewise if the penalty function coefficient was decreased the best fitness and average fitness would go up since the penalty function coefficient directly decreases the fitness of a given dataset.\\
 \indent It seems that the penalty coefficient in Problem 1 and Problem 3 could both use a little lower penalty function in order to obtain a better average fitness, but Problem 2 is having a very hard time with a penalty function coefficient of 1.  This means that Problem 2 needs to have a smaller penalty function coefficient than Problem 1 and Problem 3, which is mainly due to having double the shapes of Problem 1 and a smaller width of 20 and length while Problem 3 has a larger width of 30 and length to work with.
 
 
 \section*{\begin{center} Experiment parameters and graphs \end{center}}
 \section{Problem 1}
+
 \subsection{Graphs}
+\noindent \includegraphics [scale=0.65] {/prob1_graph}
+
 \subsubsection{Result Tables}
+Problem 1: final results\\\\
+\noindent \includegraphics [scale=0.65] {/prob1_results}
+
 \subsection{Statistical Analysis}
+\noindent \includegraphics [scale=0.65] {/prob1_best}
+\noindent \includegraphics [scale=0.65] {/prob1_average}\\\\
+\indent So according to the statistical analysis (shown above) the p-value for both best fitness and average fitness is not low enough to say that the results are statistically significant.  That means that the t-value of -1.23094 and the t-value of 0.0095054, computed using the tables given, were not far enough apart from the t-value given of 2.045 to make the difference in the fitness values statistically significant.
+
 \subsection{EA Configurations}
+If you want to get the same results you have to change the newSeed variable to 0 (Zero) in the configuration file in order to use the previous seed.
+
 \begin{lstlisting}
 Random = 0
 EA = 1
@@ -81,23 +93,32 @@ selfAdaptive: adaptMutation: 1
 
 Initialization: Uniform_Random: 1
 
-Parent_Selection: Uniform_random_parent: 0, Fitness_Proportional_Selection: 0, 
-k-Tournament_Selection_with_replacement: 1
+Parent_Selection: Uniform_random_parent: 0, Fitness_Proportional_Selection: 0, k-Tournament_Selection_with_replacement: 1
 
 Survival_Strategy: plus: 0, comma: 1
 
-Survival_Selection: Uniform_random_survival: 0, 
-Truncation: 0, 
-k-Tournament_Selection_without_replacement: 1
+Survival_Selection: Uniform_random_survival: 0, Truncation: 0, k-Tournament_Selection_without_replacement: 1
 
 Termination: Number_of_evals: 0, no_change_in_average_population_fitness_for_n_generations: 0, no_change_in_best_fitness_in_population_for_n_generations: 1
 \end{lstlisting}
 
 \section{Problem 2}
+
 \subsection{Graphs}
+\noindent \includegraphics [scale=0.65] {/prob2_graph}
+
 \subsubsection{Result Tables}
+Problem 2: final results\\\\
+\noindent \includegraphics [scale=0.65] {/prob2_results}
+
 \subsection{Statistical Analysis}
+\noindent \includegraphics [scale=0.65] {/prob2_best}
+\noindent \includegraphics [scale=0.65] {/prob2_average}\\\\
+\indent So according to the statistical analysis (shown above) the p-value for both best fitness and average fitness is not low enough to say that the results are statistically significant.  That means that the t-value of -1.26389 and the t-value of 0.382909, computed using the tables given, were not far enough apart from the t-value given of 2.045 to make the difference in the fitness values statistically significant.
+
 \subsection{EA Configurations}
+If you want to get the same results you have to change the newSeed variable to 0 (Zero) in the configuration file in order to use the previous seed.
+
 \begin{lstlisting}
 Random = 0
 EA = 1
@@ -123,23 +144,32 @@ selfAdaptive: adaptMutation: 1
 
 Initialization: Uniform_Random: 1
 
-Parent_Selection: Uniform_random_parent: 0, Fitness_Proportional_Selection: 0,
- k-Tournament_Selection_with_replacement: 1
+Parent_Selection: Uniform_random_parent: 0, Fitness_Proportional_Selection: 0, k-Tournament_Selection_with_replacement: 1
 
 Survival_Strategy: plus: 0, comma: 1
 
-Survival_Selection: Uniform_random_survival: 0, 
-Truncation: 1, 
-k-Tournament_Selection_without_replacement: 0
+Survival_Selection: Uniform_random_survival: 0, Truncation: 1, k-Tournament_Selection_without_replacement: 0
 
 Termination: Number_of_evals: 0, no_change_in_average_population_fitness_for_n_generations: 0, no_change_in_best_fitness_in_population_for_n_generations: 1
 \end{lstlisting}
 
 \section{Problem 3}
+
 \subsection{Graphs}
+\noindent \includegraphics [scale=0.65] {/prob3_graph}
+
 \subsubsection{Result Tables}
-\subsection{Statistics}
+Problem 3: final results\\\\
+\noindent \includegraphics [scale=0.65] {/prob3_results}
+
+\subsection{Statistical Analysis}
+\noindent \includegraphics [scale=0.65] {/prob3_best}
+\noindent \includegraphics [scale=0.65] {/prob3_average}\\\\
+\indent So according to the statistical analysis (shown above) the p-value for both best fitness and average fitness is not low enough to say that the results are statistically significant.  That means that the t-value of -0.76874 and the t-value of 0.206653, computed using the tables given, were not far enough apart from the t-value given of 2.045 to make the difference in the fitness values statistically significant.
+
 \subsection{EA Configurations}
+If you want to get the same results you have to change the newSeed variable to 0 (Zero) in the configuration file in order to use the previous seed.
+
 \begin{lstlisting}
 Random = 0
 EA = 1
@@ -165,14 +195,11 @@ selfAdaptive: adaptMutation: 1
 
 Initialization: Uniform_Random: 1
 
-Parent_Selection: Uniform_random_parent: 1, Fitness_Proportional_Selection: 0, 
-k-Tournament_Selection_with_replacement: 0
+Parent_Selection: Uniform_random_parent: 1, Fitness_Proportional_Selection: 0, k-Tournament_Selection_with_replacement: 0
 
 Survival_Strategy: plus: 0, comma: 1
 
-Survival_Selection: Uniform_random_survival: 1, 
-Truncation: 0,
- k-Tournament_Selection_without_replacement: 0
+Survival_Selection: Uniform_random_survival: 1, Truncation: 0, k-Tournament_Selection_without_replacement: 0
 
 Termination: Number_of_evals: 0, no_change_in_average_population_fitness_for_n_generations: 0, no_change_in_best_fitness_in_population_for_n_generations: 1
 \end{lstlisting}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  9 OCT 2017 10:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  9 OCT 2017 19:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -188,31 +188,204 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--47
 [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2]
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_graph.png, id=11, 602.25pt x 328.
+22626pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_graph.png Graphic file (type
+ png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_graph.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_graph.png
+ used on input line 57.
+(pdftex.def)             Requested size: 391.45786pt x 213.34453pt.
+
+Overfull \hbox (46.45786pt too wide) in paragraph at lines 57--58
+[] 
+ []
+
+
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_results.png, id=13, 298.11375pt x
+ 683.55376pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_results.png Graphic file (ty
+pe png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_results.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_results.p
+ng used on input line 61.
+(pdftex.def)             Requested size: 193.77164pt x 444.30469pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--62
+
+ []
+
+[2 </Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_graph.png>]
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_best.png, id=18, 285.065pt x 526.
+96875pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_best.png Graphic file (type 
+png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_best.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_best.png 
+used on input line 64.
+(pdftex.def)             Requested size: 185.29005pt x 342.52562pt.
+
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_average.png, id=19, 285.065pt x 5
+25.965pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_average.png Graphic file (ty
+pe png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_average.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_average.p
+ng used on input line 65.
+(pdftex.def)             Requested size: 185.29005pt x 341.87318pt.
+
+Overfull \hbox (27.80232pt too wide) in paragraph at lines 64--67
+[] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--67
+
+ []
+
+[3 </Users/jjniemeyer46/Desktop/Pics/EC_1c/prob1_results.png>] [4 </Users/jjnie
+meyer46/Desktop/Pics/EC_1c/prob1_best.png> </Users/jjniemeyer46/Desktop/Pics/EC
+_1c/prob1_average.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 85.
- [3] [4] [5] (./report.aux) ) 
+(Font)              <5> on input line 96.
+
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_graph.png, id=31, 603.25375pt x 3
+29.23pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_graph.png Graphic file (type
+ png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_graph.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_graph.png
+ used on input line 108.
+(pdftex.def)             Requested size: 392.11029pt x 213.99695pt.
+
+Overfull \hbox (47.11029pt too wide) in paragraph at lines 108--109
+[] 
+ []
+
+[5]
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_results.png, id=36, 298.11375pt x
+ 682.55pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_results.png Graphic file (ty
+pe png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_results.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_results.p
+ng used on input line 112.
+(pdftex.def)             Requested size: 193.77164pt x 443.65225pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--113
+
+ []
+
+[6 </Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_graph.png>]
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_best.png, id=41, 282.05376pt x 52
+5.965pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_best.png Graphic file (type 
+png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_best.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_best.png 
+used on input line 115.
+(pdftex.def)             Requested size: 183.33276pt x 341.87318pt.
+
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_average.png, id=42, 281.05pt x 52
+5.965pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_average.png Graphic file (ty
+pe png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_average.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_average.p
+ng used on input line 116.
+(pdftex.def)             Requested size: 182.68033pt x 341.87318pt.
+
+Overfull \hbox (23.2353pt too wide) in paragraph at lines 115--118
+[] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--118
+
+ []
+
+[7 </Users/jjniemeyer46/Desktop/Pics/EC_1c/prob2_results.png>] [8 </Users/jjnie
+meyer46/Desktop/Pics/EC_1c/prob2_best.png> </Users/jjniemeyer46/Desktop/Pics/EC
+_1c/prob2_average.png>]
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_graph.png, id=53, 602.25pt x 328.
+22626pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_graph.png Graphic file (type
+ png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_graph.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_graph.png
+ used on input line 159.
+(pdftex.def)             Requested size: 391.45786pt x 213.34453pt.
+
+Overfull \hbox (46.45786pt too wide) in paragraph at lines 159--160
+[] 
+ []
+
+[9]
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_results.png, id=57, 298.11375pt x
+ 683.55376pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_results.png Graphic file (ty
+pe png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_results.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_results.p
+ng used on input line 163.
+(pdftex.def)             Requested size: 193.77164pt x 444.30469pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--164
+
+ []
+
+[10 </Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_graph.png>]
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_best.png, id=62, 282.05376pt x 52
+6.96875pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_best.png Graphic file (type 
+png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_best.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_best.png 
+used on input line 166.
+(pdftex.def)             Requested size: 183.33276pt x 342.52562pt.
+
+</Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_average.png, id=63, 280.04625pt x
+ 526.96875pt>
+File: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_average.png Graphic file (ty
+pe png)
+ <use /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_average.png>
+Package pdftex.def Info: /Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_average.p
+ng used on input line 167.
+(pdftex.def)             Requested size: 182.0279pt x 342.52562pt.
+
+Overfull \hbox (22.58287pt too wide) in paragraph at lines 166--169
+[] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--169
+
+ []
+
+[11 </Users/jjniemeyer46/Desktop/Pics/EC_1c/prob3_results.png>] [12 </Users/jjn
+iemeyer46/Desktop/Pics/EC_1c/prob3_best.png> </Users/jjniemeyer46/Desktop/Pics/
+EC_1c/prob3_average.png>] [13] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 2722 strings out of 493014
- 39767 string characters out of 6133351
- 168086 words of memory out of 5000000
- 6259 multiletter control sequences out of 15000+600000
+ 2785 strings out of 493014
+ 42856 string characters out of 6133351
+ 149092 words of memory out of 5000000
+ 6307 multiletter control sequences out of 15000+600000
  7895 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,6n,32p,871b,1455s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy8.pfb>
-Output written on report.pdf (5 pages, 112229 bytes).
+ 38i,6n,32p,871b,1453s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2016/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy8.pfb>
+Output written on report.pdf (13 pages, 1150724 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 104 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
